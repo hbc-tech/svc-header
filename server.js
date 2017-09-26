@@ -1,20 +1,19 @@
 'use strict';
 
-const Arcade = require('@hbc-tech/arcade-app');
-const Transport = require('@hbc-tech/arcade-app/lib/transport');
+const logger = require('@hbc-tech/arcade-app').log; // eslint-disable-line
 const chalk = require('chalk');
 const pkg = require('./package.json');
 
-const log = Arcade.log.root.getLogger(pkg.name);
+const log = logger.root.getLogger(pkg.name);
 
 module.exports = class Server {
   constructor() {
     const Koa = require('koa');
     const koaLogger = require('koa-logger');
     const Router = require('koa-router');
-    const port = this.port = 8080;
+    const port = 8090;
 
-    const app = this.app = new Koa();
+    const app = new Koa();
     const router = new Router();
 
     app.use(koaLogger());
@@ -24,6 +23,8 @@ module.exports = class Server {
       this[fn] = router[fn].bind(router);
     }
 
+    this.app = app;
+    this.port = port;
     this.router = router;
   }
 

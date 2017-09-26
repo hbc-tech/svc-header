@@ -10,7 +10,7 @@ const server = new Server();
 
 log.setLevel('trace');
 
-function v (route) {
+function v(route) {
   const result = path.posix.join('/', pkg.version, '/', route);
   log.info('adding route', result);
   return result;
