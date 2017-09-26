@@ -1,0 +1,40 @@
+{
+  "name": "svc-header",
+  "version": "0.0.1",
+  "description": "The service responsible for serving header data",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "install:app": "npm install src/arcade-app",
+    "install:modules": "npm run install:app",
+    "setup": "npm run link:app",
+    "link:app": "npm link @hbc-tech/arcade-app",
+    "lint": "eslint .",
+    "postinstall": "npm run setup",
+    "start": "node service",
+    "test": "npm run install:modules && npm run lint"
+  },
+  "engines": {
+    "node": ">= 8"
+  },
+  "repository": "hbc-tech/svc-header",
+  "maintainers": [
+    {
+      "name": "Andrew Powell",
+      "email": "andrew@shellscape.org",
+      "url": "shellscape.org"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-logger": "^3.1.0",
+    "koa-rewrite": "^2.1.0",
+    "koa-router": "^7.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-webpack": "^1.2.5",
+    "eslint-plugin-import": "^2.7.0"
+  }
+}
